@@ -257,15 +257,28 @@
     contactActions.prepend(emailLink);
     document.querySelector('.contact-soon').textContent = config.email;
   }
-  const githubUrl = safeUrl(config.github);
-  if (githubUrl) {
-    const githubLink = document.createElement('a');
-    githubLink.className = 'button button-text contact-link';
-    githubLink.href = githubUrl;
-    githubLink.target = '_blank';
-    githubLink.rel = 'noopener noreferrer';
-    githubLink.innerHTML = `GitHub ${icon('up-right')}<span class="sr-only"> — otwiera się w nowej karcie</span>`;
-    contactActions.append(githubLink);
-  }
+  // Static social links also work without JavaScript. Config overrides them.
+  const socialLinks = [...document.querySelectorAll('[data-social]')];
+  socialLinks.forEach((link) => {
+    const platform = link.dataset.social;
+    const configuredUrl = config.socials?.[platform]
+      ?? (platform === 'github' ? config.github : undefined);
+    if (configuredUrl === undefined) return;
+
+    const url = safeUrl(configuredUrl);
+    link.hidden = !url;
+    if (!url) {
+      link.removeAttribute('href');
+      return;
+    }
+
+    link.href = url;
+    const handle = link.querySelector('.social-handle');
+    if (platform !== 'steam') {
+      const username = new URL(url).pathname.split('/').filter(Boolean)[0];
+      if (username) handle.textContent = `@${username}`;
+    }
+  });
+  document.querySelector('.social-hub').hidden = !socialLinks.some((link) => !link.hidden);
   document.querySelector('#year').textContent = String(new Date().getFullYear());
 })();

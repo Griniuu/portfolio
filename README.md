@@ -26,7 +26,13 @@ Edytuj `dist/config.js`:
 window.PORTFOLIO_CONFIG = {
   nickname: 'Griniuu',
   email: 'twoj-adres@example.com',
-  github: 'https://github.com/twoj-profil',
+  socials: {
+    github: 'https://github.com/Griniuu',
+    instagram: 'https://www.instagram.com/kacperj13/',
+    twitch: 'https://www.twitch.tv/griniuu',
+    kick: 'https://kick.com/griniuuu',
+    steam: 'https://steamcommunity.com/profiles/76561198359721222/'
+  },
   projects: {
     panelgracza: 'https://panelgracza.pl',
     lootstrefa: 'https://lootstrefatcg.pl',
@@ -36,6 +42,8 @@ window.PORTFOLIO_CONFIG = {
 ```
 
 Po podaniu adresów automatycznie pojawią się odpowiednie przyciski. Puste wartości nie tworzą fikcyjnych linków. E-mail otwiera program pocztowy odwiedzającego; strona nie ma formularza ani serwera wysyłającego wiadomości.
+
+Profile społecznościowe znajdują się w `socials`. Pusta wartość ukrywa daną kartę. Linki w HTML działają także bez JavaScript; przy ręcznej zmianie adresu warto uaktualnić również jego odpowiednik w `dist/index.html`.
 
 ## Pliki
 
