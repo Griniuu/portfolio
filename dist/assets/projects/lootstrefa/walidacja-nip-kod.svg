@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1348" height="340" viewBox="0 0 1348 340" role="img" aria-labelledby="title desc">
+<title id="title">Loot Strefa TCG — public/js/cart.js</title>
+<desc id="desc">Source excerpt, lines 419–425. function isValidPolishNip(value){
+  const nip = normalizeNip(value);
+  if(nip.length !== 10) return false;
+  const weights = [6, 5, 7, 2, 3, 4, 5, 6, 7];
+  const checksum = weights.reduce((sum, weight, index)=&gt;sum + Number(nip[index]) * weight, 0) % 11;
+  return checksum !== 10 &amp;&amp; checksum === Number(nip[9]);
+}</desc>
+<rect width="1348" height="340" rx="18" fill="#0c1210"/>
+<path d="M18 0H1330Q1348 0 1348 18V68H0V18Q0 0 18 0" fill="#19241e"/>
+<circle cx="30" cy="34" r="6" fill="#ff7c78"/><circle cx="52" cy="34" r="6" fill="#edc76c"/><circle cx="74" cy="34" r="6" fill="#8ccf85"/>
+<g font-family="Consolas, 'Courier New', monospace" font-size="20">
+<text x="108" y="41" fill="#c2f576">Loot Strefa TCG / public/js/cart.js</text>
+<text x="39" y="116" fill="#68796f">419</text><text x="104" y="116" fill="#dce7dd" xml:space="preserve">function isValidPolishNip(value){</text>
+<text x="39" y="146" fill="#68796f">420</text><text x="104" y="146" fill="#dce7dd" xml:space="preserve">  const nip = normalizeNip(value);</text>
+<text x="39" y="176" fill="#68796f">421</text><text x="104" y="176" fill="#dce7dd" xml:space="preserve">  if(nip.length !== 10) return false;</text>
+<text x="39" y="206" fill="#68796f">422</text><text x="104" y="206" fill="#dce7dd" xml:space="preserve">  const weights = [6, 5, 7, 2, 3, 4, 5, 6, 7];</text>
+<text x="39" y="236" fill="#68796f">423</text><text x="104" y="236" fill="#dce7dd" xml:space="preserve">  const checksum = weights.reduce((sum, weight, index)=&gt;sum + Number(nip[index]) * weight, 0) % 11;</text>
+<text x="39" y="266" fill="#68796f">424</text><text x="104" y="266" fill="#dce7dd" xml:space="preserve">  return checksum !== 10 &amp;&amp; checksum === Number(nip[9]);</text>
+<text x="39" y="296" fill="#68796f">425</text><text x="104" y="296" fill="#dce7dd" xml:space="preserve">}</text>
+</g></svg>

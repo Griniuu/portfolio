@@ -4,21 +4,23 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#0b0e0d">
-  <meta name="description" content="Kacper Janiszewski, Griniuu — programista Python, twórca stron internetowych i gracz. Poznaj moje projekty, umiejętności i drogę w IT.">
+  <meta name="description" content="Kacper Janiszewski, Griniuu — pasjonat informatyki, programista Python i gracz. Sprzęt, naprawy, sieci i tworzenie oprogramowania. Poznaj moje projekty i drogę w IT.">
   <meta property="og:title" content="Griniuu — Kacper Janiszewski | Portfolio">
   <meta property="og:description" content="Koduję pomysły. Gram o więcej. Python, web development i projekty, które żyją w sieci.">
   <meta property="og:type" content="website">
-  <meta property="og:url" content="https://griniuu-portfolio.snugrobin17.chatgpt.site">
-  <link rel="canonical" href="https://griniuu-portfolio.snugrobin17.chatgpt.site">
+  <meta property="og:url" content="https://griniuu.pl/">
+  <link rel="canonical" href="https://griniuu.pl/">
   <meta name="color-scheme" content="dark light">
   <title>Griniuu — Kacper Janiszewski | Portfolio</title>
-  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="icon" href="favicon.svg?v=efeadd7ce55d" type="image/svg+xml">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;450;500;550;600;650;700&family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;450;500;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css">
-  <script src="config.js" defer></script>
-  <script src="app.js" defer></script>
+  <link rel="stylesheet" href="styles.css?v=ab843cf25563">
+  <script src="config.js?v=daa6e242dd1f" defer></script>
+  <script src="i18n.js?v=7b11b47af791" defer></script>
+  <script src="gallery.js?v=4fb844110c4f" defer></script>
+  <script src="app.js?v=b9cb7faabd0e" defer></script>
 </head>
 <body>
   <a class="skip-link" href="#main">Przejdź do treści</a>
@@ -29,6 +31,15 @@
     <symbol id="i-down" viewBox="0 0 24 24"><path d="M12 4v16m-6-6 6 6 6-6"/></symbol>
     <symbol id="i-code" viewBox="0 0 24 24"><path d="m7 7-5 5 5 5m10-10 5 5-5 5m-3-14-4 18"/></symbol>
     <symbol id="i-game" viewBox="0 0 24 24"><path d="M7 7h10c2 0 3 1.5 3.5 4l1 5c.5 3-2 4-3.5 2l-2-2H8l-2 2c-1.5 2-4 1-3.5-2l1-5C4 8.5 5 7 7 7Z"/><path d="M7 10v5m-2.5-2.5h5M15.5 11h.01m2 3h.01M10 7V4h4"/></symbol>
+    <symbol id="i-repair" viewBox="0 0 24 24">
+      <path d="M14.5 6.5 18 3a6 6 0 0 0-7.5 7.5L3 18a2.1 2.1 0 0 0 3 3l7.5-7.5A6 6 0 0 0 21 6l-3.5 3.5-3-3Z"/>
+    </symbol>
+    <symbol id="i-network" viewBox="0 0 24 24">
+      <rect x="8" y="2" width="8" height="6" rx="1"/>
+      <rect x="2" y="16" width="7" height="6" rx="1"/>
+      <rect x="15" y="16" width="7" height="6" rx="1"/>
+      <path d="M12 8v4M5.5 16v-4h13v4"/>
+    </symbol>
     <symbol id="i-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v2m0 16v2M2 12h2m16 0h2M5 5l1.5 1.5m11 11L19 19M5 19l1.5-1.5m11-11L19 5"/></symbol>
     <symbol id="i-moon" viewBox="0 0 24 24"><path d="M20 15.5A8.5 8.5 0 0 1 8.5 4 8.5 8.5 0 1 0 20 15.5Z"/></symbol>
     <symbol id="i-menu" viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h16"/></symbol>
@@ -66,9 +77,13 @@
     <nav class="nav container" aria-label="Nawigacja główna">
       <a class="brand" href="#home" aria-label="Griniuu — strona główna"><span class="brand-mark">&lt;/&gt;</span>griniuu<span class="brand-dot">.</span></a>
       <div class="nav-links" id="nav-links">
-        <a href="#projekty">Projekty</a><a href="#o-mnie">O mnie</a><a href="#stack">Stack</a><a href="#droga">Moja droga</a>
+        <a href="#projekty">Projekty</a><a href="#o-mnie">O mnie</a><a href="#stack">Stack</a><a href="#droga">Moja droga</a><a class="mobile-contact-link" href="#kontakt">Kontakt</a>
       </div>
       <div class="nav-actions">
+        <div class="language-switch" role="group" aria-label="Język strony">
+          <button type="button" data-language="pl" aria-label="Polski" aria-pressed="true">PL</button>
+          <button type="button" data-language="en" aria-label="English" aria-pressed="false">EN</button>
+        </div>
         <button class="icon-button theme-toggle" aria-label="Włącz jasny motyw" title="Zmień motyw"><svg class="icon"><use href="#i-sun"/></svg></button>
         <a class="nav-contact" href="#kontakt">Porozmawiajmy <svg class="icon"><use href="#i-up-right"/></svg></a>
         <button class="icon-button menu-toggle" aria-label="Otwórz menu" aria-expanded="false" aria-controls="nav-links"><svg class="icon"><use href="#i-menu"/></svg></button>
@@ -84,7 +99,7 @@
           <div class="eyebrow hero-intro"><span class="status-dot"></span> DEVELOPER MINDSET. PLAYER HEART.</div>
           <h1 id="hero-title">Koduję pomysły.<br><span class="accent-text">Gram o więcej<span class="title-period">.</span></span></h1>
           <p class="hero-name">Kacper Janiszewski <span>/</span> <span class="mono">Griniuu</span></p>
-          <p class="hero-description">Programista z pasji, gracz po godzinach. Łączę Pythona z technologiami webowymi, żeby pomysły zamieniać w działające projekty.</p>
+          <p class="hero-description">Programista z pasji, gracz po godzinach. Interesuje mnie całe IT — od sprzętu i sieci po tworzenie oprogramowania. Kod piszę głównie w Pythonie i technologiach webowych.</p>
           <div class="hero-buttons">
             <a class="button button-primary" href="#projekty">Zobacz projekty <svg class="icon"><use href="#i-down"/></svg></a>
             <a class="button button-text" href="#o-mnie">Poznaj mnie <svg class="icon"><use href="#i-arrow"/></svg></a>
@@ -103,7 +118,7 @@
               <div class="code-line"><span class="line-number">04</span><code>    name = <span class="syntax-string">"Kacper Janiszewski"</span></code></div>
               <div class="code-line"><span class="line-number">05</span><code>    nickname = <span class="syntax-string">"Griniuu"</span></code></div>
               <div class="code-line"><span class="line-number">06</span><code>    main_language = <span class="syntax-string">"Python"</span></code></div>
-              <div class="code-line"><span class="line-number">07</span><code>    stack = [<span class="syntax-string">"HTML"</span>, <span class="syntax-string">"CSS"</span>, <span class="syntax-string">"JS"</span>]</code></div>
+              <div class="code-line"><span class="line-number">07</span><code>    stack = [<span class="syntax-string">"HTML"</span>, <span class="syntax-string">"CSS"</span>, <span class="syntax-string">"JS"</span>, <span class="syntax-string">"PHPMyAdmin"</span>]</code></div>
               <div class="code-line"><span class="line-number">08</span><code>    interests = [<span class="syntax-string">"kod"</span>, <span class="syntax-string">"gry"</span>]</code></div>
               <div class="code-line"><span class="line-number">09</span><code></code></div>
               <div class="code-line"><span class="line-number">10</span><code>    <span class="syntax-keyword">def</span> <span class="syntax-function">next_level</span>(self):</code></div>
@@ -150,7 +165,20 @@
     <section class="section about-section" id="o-mnie" aria-labelledby="about-title">
       <div class="container about-grid">
         <div class="identity-visual reveal"><div class="identity-top mono"><span>PLAYER PROFILE</span><span class="status-dot"></span></div><div class="identity-rings" aria-hidden="true"><span></span><span></span><span></span></div><div class="monogram" aria-hidden="true">kj<span>_</span></div><span class="identity-corner corner-tl" aria-hidden="true"></span><span class="identity-corner corner-tr" aria-hidden="true"></span><span class="identity-corner corner-bl" aria-hidden="true"></span><span class="identity-corner corner-br" aria-hidden="true"></span><div class="identity-caption"><strong>Kacper Janiszewski</strong><span class="mono">@Griniuu <span>//</span> developer & gamer</span></div><div class="identity-location"><svg class="icon"><use href="#i-pin"/></svg> Szczecin · ZUT</div></div>
-        <div class="about-copy reveal"><span class="section-kicker"><span>02</span> / CZŁOWIEK ZA KODEM</span><h2 id="about-title">Cześć, jestem Kacper<span class="accent-text">.</span><br><span class="muted">W sieci — Griniuu.</span></h2><p>Najlepiej odnajduję się tam, gdzie pomysł spotyka klawiaturę. <strong>Programuję przede wszystkim w Pythonie</strong>, a z HTML, CSS i JavaScript buduję to, co widać i z czym można wejść w interakcję.</p><p>Mam tytuł technika informatyka. Dziś rozwijam się na informatyce na <strong>Zachodniopomorskim Uniwersytecie Technologicznym w Szczecinie</strong>, ze specjalizacją inżynieria oprogramowania.</p><p>A kiedy zamykam edytor? Odpalam grę. Lubię odkrywać, jak działają rzeczy — zarówno po stronie kodu, jak i po drugiej stronie ekranu.</p><div class="about-values"><span><svg class="icon"><use href="#i-code"/></svg> Ciekawość w kodzie</span><span><svg class="icon"><use href="#i-game"/></svg> Gaming w DNA</span></div></div>
+        <div class="about-copy reveal">
+          <span class="section-kicker"><span>02</span> / CZŁOWIEK ZA KODEM</span>
+          <h2 id="about-title">Cześć, jestem Kacper<span class="accent-text">.</span><br><span class="muted">W sieci — Griniuu.</span></h2>
+          <p>Najlepiej odnajduję się tam, gdzie pomysł spotyka klawiaturę. <strong>Programuję przede wszystkim w Pythonie</strong>, a z HTML, CSS i JavaScript buduję to, co widać i z czym można wejść w interakcję.</p>
+          <p>Informatyka to dla mnie więcej niż programowanie. Interesują mnie naprawa i diagnostyka sprzętu, sieci komputerowe, systemy oraz inne gałęzie IT. Lubię rozumieć, jak poszczególne elementy działają razem.</p>
+          <p>Mam tytuł technika informatyka. Dziś rozwijam się na informatyce na <strong>Zachodniopomorskim Uniwersytecie Technologicznym w Szczecinie</strong>, ze specjalizacją inżynieria oprogramowania.</p>
+          <p>A kiedy zamykam edytor? Odpalam grę. Lubię odkrywać, jak działają rzeczy — zarówno po stronie kodu, jak i po drugiej stronie ekranu.</p>
+          <div class="about-values" role="group" aria-label="Obszary zainteresowań">
+            <span><svg class="icon" aria-hidden="true"><use href="#i-repair"/></svg> Sprzęt i naprawy</span>
+            <span><svg class="icon" aria-hidden="true"><use href="#i-network"/></svg> Sieci i systemy</span>
+            <span><svg class="icon" aria-hidden="true"><use href="#i-code"/></svg> Programowanie</span>
+            <span><svg class="icon" aria-hidden="true"><use href="#i-game"/></svg> Gaming w DNA</span>
+          </div>
+        </div>
       </div>
     </section>
 
@@ -163,6 +191,7 @@
             <div class="small-stack-card stack-card reveal"><span class="tech-icon css-icon">#</span><div><h3>CSS<span>3</span></h3><p>Styl, responsywność i ruch.</p></div><span class="tech-category mono">STYLE</span></div>
             <div class="small-stack-card stack-card reveal"><span class="tech-icon js-icon">JS</span><div><h3>JavaScript</h3><p>Interakcje, które ożywiają interfejs.</p></div><span class="tech-category mono">INTERACTION</span></div>
           </div>
+          <div class="small-stack-card stack-card database-card reveal"><span class="tech-icon database-icon" aria-hidden="true">DB</span><div><h3>phpMyAdmin</h3><p>Narzędzie do zarządzania bazami MySQL i MariaDB.</p></div><span class="tech-category mono">BAZY DANYCH</span></div>
         </div>
         <div class="learning-line reveal"><span class="status-dot"></span><p>Stack nigdy nie jest skończony. <span>Zawsze jest coś nowego do nauczenia.</span></p><span class="mono">LEVELING UP ↗</span></div>
       </div>
@@ -178,12 +207,16 @@
         <h2 id="contact-title">Dobry kod zaczyna się<br>od dobrego <span class="accent-text">pomysłu.</span></h2>
         <p>Projekt, technologia czy po prostu rozmowa o grach?<br>Mamy już wspólny temat.</p>
         <div class="contact-actions">
+          <a class="button button-primary contact-link" data-email-button href="mailto:kacper.janiszewski@poczta.onet.pl?subject=Cze%C5%9B%C4%87%2C%20Griniuu!%20Porozmawiajmy%20o%20projekcie.">
+            <span>Napisz do mnie</span>
+            <svg class="icon" aria-hidden="true"><use href="#i-up-right"/></svg>
+          </a>
           <button class="button button-primary copy-nick">
             <svg class="icon" aria-hidden="true"><use href="#i-copy"/></svg>
             Skopiuj mój nick <span class="button-nick">Griniuu</span>
           </button>
         </div>
-        <p class="contact-soon">Wybierz platformę i poznaj mnie lepiej.</p>
+        <p class="contact-soon"><a class="contact-email" data-email-address href="mailto:kacper.janiszewski@poczta.onet.pl">kacper.janiszewski@poczta.onet.pl</a></p>
 
         <div class="social-hub">
           <div class="social-heading">
@@ -244,7 +277,47 @@
 
   <footer class="footer"><div class="container footer-main"><a class="brand" href="#home"><span class="brand-mark">&lt;/&gt;</span>griniuu<span class="brand-dot">.</span></a><span>Pomysł. Kod. Kolejny level.</span><a class="back-top" href="#home">Do góry <svg class="icon"><use href="#i-up-right"/></svg></a></div><div class="container footer-bottom"><span>© <span id="year">2026</span> Kacper Janiszewski</span><span class="mono">ZROBIONE Z PASJI <span class="accent-text">&lt;/&gt;</span></span></div></footer>
 
-  <dialog class="project-dialog" id="project-dialog" aria-labelledby="dialog-title"><div class="dialog-content"><div class="dialog-top"><span class="section-kicker">PROJECT FILE <span id="dialog-number">01</span></span><button class="icon-button dialog-close" aria-label="Zamknij szczegóły projektu"><svg class="icon"><use href="#i-close"/></svg></button></div><div id="dialog-art" class="dialog-art" aria-hidden="true"></div><div class="dialog-copy"><span class="dialog-category mono" id="dialog-category"></span><h2 id="dialog-title"></h2><p id="dialog-description"></p><div class="dialog-details"><div><span>TWÓRCA</span><strong>Kacper Janiszewski</strong></div><div><span>TYP</span><strong id="dialog-type"></strong></div></div><p class="dialog-art-note">Autorska wizualizacja przedstawia motyw projektu. Nie jest zrzutem ekranu strony.</p><a id="dialog-link" class="button button-primary" target="_blank" rel="noopener noreferrer">Odwiedź stronę <svg class="icon"><use href="#i-up-right"/></svg><span class="sr-only"> — otwiera się w nowej karcie</span></a><p class="dialog-link-note" id="dialog-link-note" hidden>Link do projektu pojawi się wkrótce.</p></div></div></dialog>
+  <dialog class="project-dialog" id="project-dialog" aria-labelledby="dialog-title">
+    <div class="dialog-content">
+      <div class="dialog-top"><span class="section-kicker">PROJECT FILE <span id="dialog-number">01</span></span><button type="button" class="icon-button dialog-close" aria-label="Zamknij szczegóły projektu"><svg class="icon"><use href="#i-close"/></svg></button></div>
+      <div id="dialog-art" class="dialog-art" aria-hidden="true"></div>
+      <div class="dialog-copy">
+        <span class="dialog-category mono" id="dialog-category"></span>
+        <h2 id="dialog-title"></h2>
+        <p id="dialog-description"></p>
+        <section class="project-gallery" id="project-gallery" aria-labelledby="gallery-title" hidden>
+          <div class="gallery-heading"><h3 id="gallery-title">Bliżej projektu</h3><span class="gallery-kind mono" id="gallery-kind"></span></div>
+          <button type="button" class="gallery-open" id="gallery-open">
+            <img id="gallery-image" alt="" decoding="async">
+            <span class="gallery-error" id="gallery-error" role="status" hidden>Nie udało się wczytać materiału. Wybierz kolejny.</span>
+            <span class="gallery-zoom"><svg class="icon" aria-hidden="true"><use href="#i-up-right"/></svg> <span>Powiększ</span></span>
+          </button>
+          <div class="gallery-toolbar">
+            <p class="gallery-caption" id="gallery-caption"></p>
+            <div class="gallery-controls">
+              <button type="button" class="icon-button gallery-previous" data-gallery-previous aria-label="Poprzedni materiał"><svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></button>
+              <span class="gallery-position mono" id="gallery-position" role="status" aria-live="polite"></span>
+              <button type="button" class="icon-button" data-gallery-next aria-label="Następny materiał"><svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></button>
+            </div>
+          </div>
+          <div class="gallery-thumbnails" id="gallery-thumbnails" role="group" aria-label="Wybierz materiał"></div>
+        </section>
+        <div class="dialog-details"><div><span>TWÓRCA</span><strong>Kacper Janiszewski</strong></div><div><span>TYP</span><strong id="dialog-type"></strong></div></div>
+        <p class="dialog-art-note">Autorska wizualizacja przedstawia motyw projektu. Nie jest zrzutem ekranu strony.</p>
+        <a id="dialog-link" class="button button-primary" target="_blank" rel="noopener noreferrer">Odwiedź stronę <svg class="icon"><use href="#i-up-right"/></svg><span class="sr-only"> — otwiera się w nowej karcie</span></a>
+        <p class="dialog-link-note" id="dialog-link-note" hidden>Link do projektu pojawi się wkrótce.</p>
+      </div>
+    </div>
+  </dialog>
+  <dialog class="gallery-viewer" id="gallery-viewer" aria-labelledby="gallery-viewer-title">
+    <div class="gallery-viewer-header"><h2 id="gallery-viewer-title"></h2><button type="button" class="icon-button" id="gallery-viewer-close" aria-label="Zamknij powiększenie"><svg class="icon" aria-hidden="true"><use href="#i-close"/></svg></button></div>
+    <div class="gallery-viewer-stage"><img id="gallery-viewer-image" alt="" decoding="async"><p class="gallery-error" id="gallery-viewer-error" role="status" hidden>Nie udało się wczytać materiału. Wybierz kolejny.</p></div>
+    <div class="gallery-viewer-footer">
+      <div class="gallery-controls"><button type="button" class="icon-button gallery-previous" data-gallery-previous aria-label="Poprzedni materiał"><svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></button><span class="gallery-position mono" id="gallery-viewer-position" role="status" aria-live="polite"></span><button type="button" class="icon-button" data-gallery-next aria-label="Następny materiał"><svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></button></div>
+      <a class="gallery-original" id="gallery-original" target="_blank" rel="noopener noreferrer">Otwórz oryginał <svg class="icon" aria-hidden="true"><use href="#i-up-right"/></svg><span class="sr-only"> — otwiera się w nowej karcie</span></a>
+    </div>
+  </dialog>
   <div class="toast" role="status" aria-live="polite"><svg class="icon"><use href="#i-check"/></svg><span>Skopiowano nick: Griniuu</span></div>
+  <span class="sr-only language-status" role="status" aria-live="polite"></span>
 </body>
 </html>

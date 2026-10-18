@@ -1,0 +1,74 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1602" height="1120" viewBox="0 0 1602 1120" role="img" aria-labelledby="title desc">
+<title id="title">Loot Strefa TCG — public/js/cart.js</title>
+<desc id="desc">Source excerpt, lines 273–305. function scoreCrossSellProduct(product, context){
+  const text = crossSellProductText(product);
+  const price = Number(product.price || 0);
+  const productGame = crossSellGameForText(text);
+  let score = 0;
+  let reason = &apos;Dobry dodatek do zamowienia&apos;;
+
+  if(context.games.includes(productGame)){
+    score += 35;
+    reason = `${productGame} pasuje do koszyka`;
+  }
+  if(isAccessoryProduct(text)){
+    score += 20;
+    reason = context.hasExpensiveCard ? &apos;Ochrona do drozszych kart&apos; : &apos;Przydatna ochrona kart&apos;;
+  }
+  if(context.hasExpensiveCard &amp;&amp; isProtectionProduct(text)){
+    score += 35;
+    reason = &apos;Zabezpiecz drozsze karty&apos;;
+  }
+  if(context.games.includes(productGame) &amp;&amp; isSealedProduct(text)){
+    score += 22;
+    reason = `Dodatkowy produkt ${productGame}`;
+  }
+  if(context.freeShippingGap &gt; 0 &amp;&amp; context.freeShippingGap &lt;= 60 &amp;&amp; price &gt; 0 &amp;&amp; price &lt;= context.freeShippingGap + 5){
+    score += 30;
+    reason = `Brakuje ok. ${fmtMoney(context.freeShippingGap)} do darmowej dostawy`;
+  }
+  if(Number(product.featured || 0) === 1) score += 8;
+  if(Number(product.isNewActive || product.isNew || 0) === 1) score += 6;
+  if(Number(product.compareAtPrice || 0) &gt; price) score += 5;
+  if(price &gt; 0 &amp;&amp; price &lt;= 25) score += 4;
+  return { product, score, reason };
+}</desc>
+<rect width="1602" height="1120" rx="18" fill="#0c1210"/>
+<path d="M18 0H1584Q1602 0 1602 18V68H0V18Q0 0 18 0" fill="#19241e"/>
+<circle cx="30" cy="34" r="6" fill="#ff7c78"/><circle cx="52" cy="34" r="6" fill="#edc76c"/><circle cx="74" cy="34" r="6" fill="#8ccf85"/>
+<g font-family="Consolas, 'Courier New', monospace" font-size="20">
+<text x="108" y="41" fill="#c2f576">Loot Strefa TCG / public/js/cart.js</text>
+<text x="39" y="116" fill="#68796f">273</text><text x="104" y="116" fill="#dce7dd" xml:space="preserve">function scoreCrossSellProduct(product, context){</text>
+<text x="39" y="146" fill="#68796f">274</text><text x="104" y="146" fill="#dce7dd" xml:space="preserve">  const text = crossSellProductText(product);</text>
+<text x="39" y="176" fill="#68796f">275</text><text x="104" y="176" fill="#dce7dd" xml:space="preserve">  const price = Number(product.price || 0);</text>
+<text x="39" y="206" fill="#68796f">276</text><text x="104" y="206" fill="#dce7dd" xml:space="preserve">  const productGame = crossSellGameForText(text);</text>
+<text x="39" y="236" fill="#68796f">277</text><text x="104" y="236" fill="#dce7dd" xml:space="preserve">  let score = 0;</text>
+<text x="39" y="266" fill="#68796f">278</text><text x="104" y="266" fill="#dce7dd" xml:space="preserve">  let reason = &apos;Dobry dodatek do zamowienia&apos;;</text>
+<text x="39" y="296" fill="#68796f">279</text><text x="104" y="296" fill="#dce7dd" xml:space="preserve"></text>
+<text x="39" y="326" fill="#68796f">280</text><text x="104" y="326" fill="#dce7dd" xml:space="preserve">  if(context.games.includes(productGame)){</text>
+<text x="39" y="356" fill="#68796f">281</text><text x="104" y="356" fill="#dce7dd" xml:space="preserve">    score += 35;</text>
+<text x="39" y="386" fill="#68796f">282</text><text x="104" y="386" fill="#dce7dd" xml:space="preserve">    reason = `${productGame} pasuje do koszyka`;</text>
+<text x="39" y="416" fill="#68796f">283</text><text x="104" y="416" fill="#dce7dd" xml:space="preserve">  }</text>
+<text x="39" y="446" fill="#68796f">284</text><text x="104" y="446" fill="#dce7dd" xml:space="preserve">  if(isAccessoryProduct(text)){</text>
+<text x="39" y="476" fill="#68796f">285</text><text x="104" y="476" fill="#dce7dd" xml:space="preserve">    score += 20;</text>
+<text x="39" y="506" fill="#68796f">286</text><text x="104" y="506" fill="#dce7dd" xml:space="preserve">    reason = context.hasExpensiveCard ? &apos;Ochrona do drozszych kart&apos; : &apos;Przydatna ochrona kart&apos;;</text>
+<text x="39" y="536" fill="#68796f">287</text><text x="104" y="536" fill="#dce7dd" xml:space="preserve">  }</text>
+<text x="39" y="566" fill="#68796f">288</text><text x="104" y="566" fill="#dce7dd" xml:space="preserve">  if(context.hasExpensiveCard &amp;&amp; isProtectionProduct(text)){</text>
+<text x="39" y="596" fill="#68796f">289</text><text x="104" y="596" fill="#dce7dd" xml:space="preserve">    score += 35;</text>
+<text x="39" y="626" fill="#68796f">290</text><text x="104" y="626" fill="#dce7dd" xml:space="preserve">    reason = &apos;Zabezpiecz drozsze karty&apos;;</text>
+<text x="39" y="656" fill="#68796f">291</text><text x="104" y="656" fill="#dce7dd" xml:space="preserve">  }</text>
+<text x="39" y="686" fill="#68796f">292</text><text x="104" y="686" fill="#dce7dd" xml:space="preserve">  if(context.games.includes(productGame) &amp;&amp; isSealedProduct(text)){</text>
+<text x="39" y="716" fill="#68796f">293</text><text x="104" y="716" fill="#dce7dd" xml:space="preserve">    score += 22;</text>
+<text x="39" y="746" fill="#68796f">294</text><text x="104" y="746" fill="#dce7dd" xml:space="preserve">    reason = `Dodatkowy produkt ${productGame}`;</text>
+<text x="39" y="776" fill="#68796f">295</text><text x="104" y="776" fill="#dce7dd" xml:space="preserve">  }</text>
+<text x="39" y="806" fill="#68796f">296</text><text x="104" y="806" fill="#dce7dd" xml:space="preserve">  if(context.freeShippingGap &gt; 0 &amp;&amp; context.freeShippingGap &lt;= 60 &amp;&amp; price &gt; 0 &amp;&amp; price &lt;= context.freeShippingGap + 5){</text>
+<text x="39" y="836" fill="#68796f">297</text><text x="104" y="836" fill="#dce7dd" xml:space="preserve">    score += 30;</text>
+<text x="39" y="866" fill="#68796f">298</text><text x="104" y="866" fill="#dce7dd" xml:space="preserve">    reason = `Brakuje ok. ${fmtMoney(context.freeShippingGap)} do darmowej dostawy`;</text>
+<text x="39" y="896" fill="#68796f">299</text><text x="104" y="896" fill="#dce7dd" xml:space="preserve">  }</text>
+<text x="39" y="926" fill="#68796f">300</text><text x="104" y="926" fill="#dce7dd" xml:space="preserve">  if(Number(product.featured || 0) === 1) score += 8;</text>
+<text x="39" y="956" fill="#68796f">301</text><text x="104" y="956" fill="#dce7dd" xml:space="preserve">  if(Number(product.isNewActive || product.isNew || 0) === 1) score += 6;</text>
+<text x="39" y="986" fill="#68796f">302</text><text x="104" y="986" fill="#dce7dd" xml:space="preserve">  if(Number(product.compareAtPrice || 0) &gt; price) score += 5;</text>
+<text x="39" y="1016" fill="#68796f">303</text><text x="104" y="1016" fill="#dce7dd" xml:space="preserve">  if(price &gt; 0 &amp;&amp; price &lt;= 25) score += 4;</text>
+<text x="39" y="1046" fill="#68796f">304</text><text x="104" y="1046" fill="#dce7dd" xml:space="preserve">  return { product, score, reason };</text>
+<text x="39" y="1076" fill="#68796f">305</text><text x="104" y="1076" fill="#dce7dd" xml:space="preserve">}</text>
+</g></svg>

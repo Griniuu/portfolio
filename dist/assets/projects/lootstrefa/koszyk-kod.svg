@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1723" height="460" viewBox="0 0 1723 460" role="img" aria-labelledby="title desc">
+<title id="title">Loot Strefa TCG — public/js/cart.js</title>
+<desc id="desc">Source excerpt, lines 4–14. function getCart(){
+  try{
+    const parsed = JSON.parse(localStorage.getItem(&apos;cart&apos;) || &apos;[]&apos;);
+    if(!Array.isArray(parsed)) return [];
+    return parsed
+      .filter(item =&gt; item &amp;&amp; Number(item.id) &gt; 0)
+      .map(item =&gt; ({...item, qty: Math.max(1, Math.floor(Number(item.qty) || 1)), price: Math.max(0, Number(item.price) || 0)}));
+  }catch(_){
+    return [];
+  }
+}</desc>
+<rect width="1723" height="460" rx="18" fill="#0c1210"/>
+<path d="M18 0H1705Q1723 0 1723 18V68H0V18Q0 0 18 0" fill="#19241e"/>
+<circle cx="30" cy="34" r="6" fill="#ff7c78"/><circle cx="52" cy="34" r="6" fill="#edc76c"/><circle cx="74" cy="34" r="6" fill="#8ccf85"/>
+<g font-family="Consolas, 'Courier New', monospace" font-size="20">
+<text x="108" y="41" fill="#c2f576">Loot Strefa TCG / public/js/cart.js</text>
+<text x="39" y="116" fill="#68796f">4</text><text x="104" y="116" fill="#dce7dd" xml:space="preserve">function getCart(){</text>
+<text x="39" y="146" fill="#68796f">5</text><text x="104" y="146" fill="#dce7dd" xml:space="preserve">  try{</text>
+<text x="39" y="176" fill="#68796f">6</text><text x="104" y="176" fill="#dce7dd" xml:space="preserve">    const parsed = JSON.parse(localStorage.getItem(&apos;cart&apos;) || &apos;[]&apos;);</text>
+<text x="39" y="206" fill="#68796f">7</text><text x="104" y="206" fill="#dce7dd" xml:space="preserve">    if(!Array.isArray(parsed)) return [];</text>
+<text x="39" y="236" fill="#68796f">8</text><text x="104" y="236" fill="#dce7dd" xml:space="preserve">    return parsed</text>
+<text x="39" y="266" fill="#68796f">9</text><text x="104" y="266" fill="#dce7dd" xml:space="preserve">      .filter(item =&gt; item &amp;&amp; Number(item.id) &gt; 0)</text>
+<text x="39" y="296" fill="#68796f">10</text><text x="104" y="296" fill="#dce7dd" xml:space="preserve">      .map(item =&gt; ({...item, qty: Math.max(1, Math.floor(Number(item.qty) || 1)), price: Math.max(0, Number(item.price) || 0)}));</text>
+<text x="39" y="326" fill="#68796f">11</text><text x="104" y="326" fill="#dce7dd" xml:space="preserve">  }catch(_){</text>
+<text x="39" y="356" fill="#68796f">12</text><text x="104" y="356" fill="#dce7dd" xml:space="preserve">    return [];</text>
+<text x="39" y="386" fill="#68796f">13</text><text x="104" y="386" fill="#dce7dd" xml:space="preserve">  }</text>
+<text x="39" y="416" fill="#68796f">14</text><text x="104" y="416" fill="#dce7dd" xml:space="preserve">}</text>
+</g></svg>

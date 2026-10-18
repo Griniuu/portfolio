@@ -4,6 +4,7 @@
   const config = window.PORTFOLIO_CONFIG || {};
   const nickname = config.nickname || 'Griniuu';
   const root = document.documentElement;
+  const t = (text, values) => window.PORTFOLIO_I18N.t(text, values);
   const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   const icon = (name) => `<svg class="icon" aria-hidden="true"><use href="#i-${name}"/></svg>`;
 
@@ -22,7 +23,8 @@
     root.dataset.theme = theme;
     const isDark = theme === 'dark';
     themeToggle.innerHTML = icon(isDark ? 'sun' : 'moon');
-    themeToggle.setAttribute('aria-label', isDark ? 'Włącz jasny motyw' : 'Włącz ciemny motyw');
+    themeToggle.setAttribute('aria-label', t(isDark ? 'Włącz jasny motyw' : 'Włącz ciemny motyw'));
+    themeToggle.title = t('Zmień motyw');
     document.querySelector('meta[name="theme-color"]').content = isDark ? '#0b0e0d' : '#f4f5ee';
   }
   try {
@@ -40,14 +42,14 @@
   function closeMenu() {
     navLinks.classList.remove('open');
     menuToggle.setAttribute('aria-expanded', 'false');
-    menuToggle.setAttribute('aria-label', 'Otwórz menu');
+    menuToggle.setAttribute('aria-label', t('Otwórz menu'));
     menuToggle.innerHTML = icon('menu');
   }
   menuToggle.addEventListener('click', () => {
     const open = !navLinks.classList.contains('open');
     navLinks.classList.toggle('open', open);
     menuToggle.setAttribute('aria-expanded', String(open));
-    menuToggle.setAttribute('aria-label', open ? 'Zamknij menu' : 'Otwórz menu');
+    menuToggle.setAttribute('aria-label', t(open ? 'Zamknij menu' : 'Otwórz menu'));
     menuToggle.innerHTML = icon(open ? 'close' : 'menu');
   });
   navLinks.querySelectorAll('a').forEach((link) => link.addEventListener('click', closeMenu));
@@ -108,22 +110,25 @@
 
   const projectCards = [...document.querySelectorAll('.project-card')];
   const filters = [...document.querySelectorAll('.filter-button')];
+  function updateProjectCounter() {
+    const count = projectCards.filter((card) => !card.hidden).length;
+    const label = count === 1 ? 'PROJEKT' : count >= 2 && count <= 4 ? 'PROJEKTY' : 'PROJEKTÓW';
+    document.querySelector('.project-counter').textContent = `${count} ${t(label)}`;
+  }
   filters.forEach((button) => button.addEventListener('click', () => {
     filters.forEach((filter) => {
       const active = filter === button;
       filter.classList.toggle('active', active);
       filter.setAttribute('aria-pressed', String(active));
     });
-    let count = 0;
     projectCards.forEach((card) => {
       const visible = button.dataset.filter === 'all' || card.dataset.category === button.dataset.filter;
       card.hidden = !visible;
       if (visible) {
-        count++;
         card.classList.add('is-visible');
       }
     });
-    document.querySelector('.project-counter').textContent = `${count} ${count === 1 ? 'PROJEKT' : 'PROJEKTY'}`;
+    updateProjectCounter();
     updateProgress();
   }));
 
@@ -153,26 +158,31 @@
     if (currentLink && !url) currentLink.remove();
     if (key === 'rozaniec' && url) {
       const link = document.createElement('a');
+      link.className = 'configured-project-link';
       link.href = url;
       link.target = '_blank';
       link.rel = 'noopener noreferrer';
-      link.innerHTML = `Odwiedź stronę ${icon('up-right')}<span class="sr-only"> — otwiera się w nowej karcie</span>`;
+      link.innerHTML = `${t('Odwiedź stronę')} ${icon('up-right')}<span class="sr-only"> ${t('— otwiera się w nowej karcie')}</span>`;
       card.querySelector('.project-footer .text-link').replaceWith(link);
     }
   });
 
   const dialog = document.querySelector('#project-dialog');
+  const projectGallery = window.PORTFOLIO_GALLERY.create();
   let lastProjectTrigger = null;
+  let activeProjectKey = null;
   let previousOverflow = '';
-  function openProject(key, trigger) {
+  function renderProject(key) {
     const project = projects[key];
     if (!project) return;
-    lastProjectTrigger = trigger;
     document.querySelector('#dialog-title').textContent = project.title;
     document.querySelector('#dialog-number').textContent = project.number;
-    document.querySelector('#dialog-category').textContent = project.category;
-    document.querySelector('#dialog-description').textContent = project.description;
-    document.querySelector('#dialog-type').textContent = project.type;
+    document.querySelector('#dialog-category').textContent = t(project.category);
+    document.querySelector('#dialog-description').textContent = t(project.description);
+    document.querySelector('#dialog-type').textContent = t(project.type);
+    const hasGallery = projectGallery.setProject(key, config.galleries?.[key], project.title) > 0;
+    document.querySelector('#dialog-art').hidden = hasGallery;
+    document.querySelector('.dialog-art-note').hidden = hasGallery;
     const art = document.querySelector(`[data-project="${key}"] .project-art`).cloneNode(true);
     art.removeAttribute('data-open-project');
     art.removeAttribute('aria-label');
@@ -198,6 +208,12 @@
     if (url) link.href = url;
     else link.removeAttribute('href');
     document.querySelector('#dialog-link-note').hidden = Boolean(url);
+  }
+  function openProject(key, trigger) {
+    if (!projects[key]) return;
+    activeProjectKey = key;
+    lastProjectTrigger = trigger;
+    renderProject(key);
     previousOverflow = document.body.style.overflow;
     dialog.showModal();
     document.body.style.overflow = 'hidden';
@@ -214,14 +230,18 @@
     if (event.target === dialog && (event.clientX < rect.left || event.clientX > rect.right || event.clientY < rect.top || event.clientY > rect.bottom)) dialog.close();
   });
   dialog.addEventListener('close', () => {
+    projectGallery.clear();
+    activeProjectKey = null;
     document.body.style.overflow = previousOverflow;
     lastProjectTrigger?.focus({ preventScroll: true });
   });
 
   const toast = document.querySelector('.toast');
   let toastTimeout;
+  let toastMessage = '';
   function showToast(message, success = true) {
-    toast.querySelector('span').textContent = message;
+    toastMessage = message;
+    toast.querySelector('span').textContent = t(message, { nickname });
     toast.querySelector('use').setAttribute('href', success ? '#i-check' : '#i-copy');
     toast.classList.add('visible');
     clearTimeout(toastTimeout);
@@ -244,18 +264,23 @@
       field.remove();
       document.querySelector('.copy-nick').focus({ preventScroll: true });
     }
-    showToast(copied ? `Skopiowano nick: ${nickname}` : `Mój nick: ${nickname}. Możesz skopiować go z przycisku.`, copied);
+    showToast(copied ? 'Skopiowano nick: {nickname}' : 'Mój nick: {nickname}. Możesz skopiować go z przycisku.', copied);
   });
 
-  // Supply actual contact data in config.js to activate these links.
-  const contactActions = document.querySelector('.contact-actions');
-  if (typeof config.email === 'string' && /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(config.email)) {
-    const emailLink = document.createElement('a');
-    emailLink.className = 'button button-primary contact-link';
-    emailLink.href = `mailto:${encodeURIComponent(config.email)}?subject=${encodeURIComponent('Cześć, Griniuu! Porozmawiajmy o projekcie.')}`;
-    emailLink.innerHTML = `Napisz do mnie ${icon('up-right')}`;
-    contactActions.prepend(emailLink);
-    document.querySelector('.contact-soon').textContent = config.email;
+  // The email also exists in the static HTML; config can override or hide it.
+  function updateContact() {
+    const emailButton = document.querySelector('[data-email-button]');
+    const emailAddress = document.querySelector('[data-email-address]');
+    const valid = typeof config.email === 'string' && /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(config.email);
+    emailButton.hidden = !valid;
+    emailAddress.closest('.contact-soon').hidden = !valid;
+    if (!valid) return;
+
+    const subject = t('Cześć, Griniuu! Porozmawiajmy o projekcie.');
+    emailButton.href = `mailto:${config.email}?subject=${encodeURIComponent(subject)}`;
+    emailButton.querySelector('span').textContent = t('Napisz do mnie');
+    emailAddress.href = `mailto:${config.email}`;
+    emailAddress.textContent = config.email;
   }
   // Static social links also work without JavaScript. Config overrides them.
   const socialLinks = [...document.querySelectorAll('[data-social]')];
@@ -280,5 +305,21 @@
     }
   });
   document.querySelector('.social-hub').hidden = !socialLinks.some((link) => !link.hidden);
+
+  function refreshLocalizedUI() {
+    applyTheme(root.dataset.theme);
+    const menuOpen = navLinks.classList.contains('open');
+    menuToggle.setAttribute('aria-label', t(menuOpen ? 'Zamknij menu' : 'Otwórz menu'));
+    updateProjectCounter();
+    updateContact();
+    if (dialog.open && activeProjectKey) renderProject(activeProjectKey);
+    if (toastMessage) toast.querySelector('span').textContent = t(toastMessage, { nickname });
+    document.querySelectorAll('.configured-project-link').forEach((link) => {
+      link.innerHTML = `${t('Odwiedź stronę')} ${icon('up-right')}<span class="sr-only"> ${t('— otwiera się w nowej karcie')}</span>`;
+    });
+    updateProgress();
+  }
+  document.addEventListener('portfolio:languagechange', refreshLocalizedUI);
+  refreshLocalizedUI();
   document.querySelector('#year').textContent = String(new Date().getFullYear());
 })();

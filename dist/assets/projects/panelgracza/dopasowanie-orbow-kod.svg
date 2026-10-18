@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1320" height="280" viewBox="0 0 1320 280" role="img" aria-labelledby="title desc">
+<title id="title">Panel Gracza — static/js/drify-rules.js</title>
+<desc id="desc">Source excerpt, lines 74–78. function getAllowedOrbTypesForSlot(slotId) {
+    return new Set(Object.entries(ORB_SLOT_MAP)
+        .filter(([, slots]) =&gt; slots.includes(slotId))
+        .map(([type]) =&gt; type));
+}</desc>
+<rect width="1320" height="280" rx="18" fill="#0c1210"/>
+<path d="M18 0H1302Q1320 0 1320 18V68H0V18Q0 0 18 0" fill="#19241e"/>
+<circle cx="30" cy="34" r="6" fill="#ff7c78"/><circle cx="52" cy="34" r="6" fill="#edc76c"/><circle cx="74" cy="34" r="6" fill="#8ccf85"/>
+<g font-family="Consolas, 'Courier New', monospace" font-size="20">
+<text x="108" y="41" fill="#c2f576">Panel Gracza / static/js/drify-rules.js</text>
+<text x="39" y="116" fill="#68796f">74</text><text x="104" y="116" fill="#dce7dd" xml:space="preserve">function getAllowedOrbTypesForSlot(slotId) {</text>
+<text x="39" y="146" fill="#68796f">75</text><text x="104" y="146" fill="#dce7dd" xml:space="preserve">    return new Set(Object.entries(ORB_SLOT_MAP)</text>
+<text x="39" y="176" fill="#68796f">76</text><text x="104" y="176" fill="#dce7dd" xml:space="preserve">        .filter(([, slots]) =&gt; slots.includes(slotId))</text>
+<text x="39" y="206" fill="#68796f">77</text><text x="104" y="206" fill="#dce7dd" xml:space="preserve">        .map(([type]) =&gt; type));</text>
+<text x="39" y="236" fill="#68796f">78</text><text x="104" y="236" fill="#dce7dd" xml:space="preserve">}</text>
+</g></svg>

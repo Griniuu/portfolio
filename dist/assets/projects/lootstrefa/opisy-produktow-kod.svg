@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1320" height="340" viewBox="0 0 1320 340" role="img" aria-labelledby="title desc">
+<title id="title">Loot Strefa TCG — server/product_content.py</title>
+<desc id="desc">Source excerpt, lines 126–132. def description_text(raw):
+    value = str(raw or &quot;&quot;)
+    if re.search(r&quot;&lt;/?[a-z][^&gt;]*&gt;&quot;, value, re.I):
+        parser = ProductHTMLParser(text_only=True)
+        parser.feed(value)
+        value = parser.result()
+    return &quot; &quot;.join(value.split())</desc>
+<rect width="1320" height="340" rx="18" fill="#0c1210"/>
+<path d="M18 0H1302Q1320 0 1320 18V68H0V18Q0 0 18 0" fill="#19241e"/>
+<circle cx="30" cy="34" r="6" fill="#ff7c78"/><circle cx="52" cy="34" r="6" fill="#edc76c"/><circle cx="74" cy="34" r="6" fill="#8ccf85"/>
+<g font-family="Consolas, 'Courier New', monospace" font-size="20">
+<text x="108" y="41" fill="#c2f576">Loot Strefa TCG / server/product_content.py</text>
+<text x="39" y="116" fill="#68796f">126</text><text x="104" y="116" fill="#dce7dd" xml:space="preserve">def description_text(raw):</text>
+<text x="39" y="146" fill="#68796f">127</text><text x="104" y="146" fill="#dce7dd" xml:space="preserve">    value = str(raw or &quot;&quot;)</text>
+<text x="39" y="176" fill="#68796f">128</text><text x="104" y="176" fill="#dce7dd" xml:space="preserve">    if re.search(r&quot;&lt;/?[a-z][^&gt;]*&gt;&quot;, value, re.I):</text>
+<text x="39" y="206" fill="#68796f">129</text><text x="104" y="206" fill="#dce7dd" xml:space="preserve">        parser = ProductHTMLParser(text_only=True)</text>
+<text x="39" y="236" fill="#68796f">130</text><text x="104" y="236" fill="#dce7dd" xml:space="preserve">        parser.feed(value)</text>
+<text x="39" y="266" fill="#68796f">131</text><text x="104" y="266" fill="#dce7dd" xml:space="preserve">        value = parser.result()</text>
+<text x="39" y="296" fill="#68796f">132</text><text x="104" y="296" fill="#dce7dd" xml:space="preserve">    return &quot; &quot;.join(value.split())</text>
+</g></svg>

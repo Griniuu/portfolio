@@ -1,0 +1,52 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1320" height="790" viewBox="0 0 1320 790" role="img" aria-labelledby="title desc">
+<title id="title">Panel Gracza — app/calculator_algorithms.py</title>
+<desc id="desc">Source excerpt, lines 57–78. def purchase_steps(remaining, count=30, sets=DEFAULT_SETS):
+    milestones = optimal_purchase_plan(remaining, count, sets)
+    resources = list(remaining)
+    cumulative = [0, 0, 0, 0]
+    steps = []
+    for milestone in milestones:
+        order = milestone[&apos;order&apos;]
+        resources = list(remaining)
+        cumulative = [0, 0, 0, 0]
+        last_missing = [0, 0, 0, 0]
+        for set_number in order:
+            group = sets[set_number - 1]
+            last_missing = [max(0, group[i] - resources[i]) for i in range(4)]
+            resources = [resources[i] + last_missing[i] - group[i] for i in range(4)]
+            cumulative = [cumulative[i] + last_missing[i] for i in range(4)]
+        steps.append({
+            &apos;set&apos;: order[-1],
+            &apos;missing&apos;: last_missing,
+            &apos;total_cost&apos;: milestone[&apos;cost&apos;],
+            &apos;total_bought&apos;: cumulative,
+        })
+    return steps</desc>
+<rect width="1320" height="790" rx="18" fill="#0c1210"/>
+<path d="M18 0H1302Q1320 0 1320 18V68H0V18Q0 0 18 0" fill="#19241e"/>
+<circle cx="30" cy="34" r="6" fill="#ff7c78"/><circle cx="52" cy="34" r="6" fill="#edc76c"/><circle cx="74" cy="34" r="6" fill="#8ccf85"/>
+<g font-family="Consolas, 'Courier New', monospace" font-size="20">
+<text x="108" y="41" fill="#c2f576">Panel Gracza / app/calculator_algorithms.py</text>
+<text x="39" y="116" fill="#68796f">57</text><text x="104" y="116" fill="#dce7dd" xml:space="preserve">def purchase_steps(remaining, count=30, sets=DEFAULT_SETS):</text>
+<text x="39" y="146" fill="#68796f">58</text><text x="104" y="146" fill="#dce7dd" xml:space="preserve">    milestones = optimal_purchase_plan(remaining, count, sets)</text>
+<text x="39" y="176" fill="#68796f">59</text><text x="104" y="176" fill="#dce7dd" xml:space="preserve">    resources = list(remaining)</text>
+<text x="39" y="206" fill="#68796f">60</text><text x="104" y="206" fill="#dce7dd" xml:space="preserve">    cumulative = [0, 0, 0, 0]</text>
+<text x="39" y="236" fill="#68796f">61</text><text x="104" y="236" fill="#dce7dd" xml:space="preserve">    steps = []</text>
+<text x="39" y="266" fill="#68796f">62</text><text x="104" y="266" fill="#dce7dd" xml:space="preserve">    for milestone in milestones:</text>
+<text x="39" y="296" fill="#68796f">63</text><text x="104" y="296" fill="#dce7dd" xml:space="preserve">        order = milestone[&apos;order&apos;]</text>
+<text x="39" y="326" fill="#68796f">64</text><text x="104" y="326" fill="#dce7dd" xml:space="preserve">        resources = list(remaining)</text>
+<text x="39" y="356" fill="#68796f">65</text><text x="104" y="356" fill="#dce7dd" xml:space="preserve">        cumulative = [0, 0, 0, 0]</text>
+<text x="39" y="386" fill="#68796f">66</text><text x="104" y="386" fill="#dce7dd" xml:space="preserve">        last_missing = [0, 0, 0, 0]</text>
+<text x="39" y="416" fill="#68796f">67</text><text x="104" y="416" fill="#dce7dd" xml:space="preserve">        for set_number in order:</text>
+<text x="39" y="446" fill="#68796f">68</text><text x="104" y="446" fill="#dce7dd" xml:space="preserve">            group = sets[set_number - 1]</text>
+<text x="39" y="476" fill="#68796f">69</text><text x="104" y="476" fill="#dce7dd" xml:space="preserve">            last_missing = [max(0, group[i] - resources[i]) for i in range(4)]</text>
+<text x="39" y="506" fill="#68796f">70</text><text x="104" y="506" fill="#dce7dd" xml:space="preserve">            resources = [resources[i] + last_missing[i] - group[i] for i in range(4)]</text>
+<text x="39" y="536" fill="#68796f">71</text><text x="104" y="536" fill="#dce7dd" xml:space="preserve">            cumulative = [cumulative[i] + last_missing[i] for i in range(4)]</text>
+<text x="39" y="566" fill="#68796f">72</text><text x="104" y="566" fill="#dce7dd" xml:space="preserve">        steps.append({</text>
+<text x="39" y="596" fill="#68796f">73</text><text x="104" y="596" fill="#dce7dd" xml:space="preserve">            &apos;set&apos;: order[-1],</text>
+<text x="39" y="626" fill="#68796f">74</text><text x="104" y="626" fill="#dce7dd" xml:space="preserve">            &apos;missing&apos;: last_missing,</text>
+<text x="39" y="656" fill="#68796f">75</text><text x="104" y="656" fill="#dce7dd" xml:space="preserve">            &apos;total_cost&apos;: milestone[&apos;cost&apos;],</text>
+<text x="39" y="686" fill="#68796f">76</text><text x="104" y="686" fill="#dce7dd" xml:space="preserve">            &apos;total_bought&apos;: cumulative,</text>
+<text x="39" y="716" fill="#68796f">77</text><text x="104" y="716" fill="#dce7dd" xml:space="preserve">        })</text>
+<text x="39" y="746" fill="#68796f">78</text><text x="104" y="746" fill="#dce7dd" xml:space="preserve">    return steps</text>
+</g></svg>

@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1320" height="550" viewBox="0 0 1320 550" role="img" aria-labelledby="title desc">
+<title id="title">Loot Strefa TCG — server/product_content.py</title>
+<desc id="desc">Source excerpt, lines 143–156. def default_specification(product, settings=None, keep_empty=False):
+    settings = settings or {}
+    key = &apos;cards&apos; if is_card_product(product) else product.get(&apos;category&apos;)
+    groups = SPECIFICATION_TEMPLATES.get(key, SPECIFICATION_TEMPLATES[&apos;default&apos;])
+    result = []
+    for title, fields in groups:
+        parameters = []
+        for name, key in fields:
+            value = str(product.get(key) or settings.get(key) or &apos;&apos;) if key else &apos;&apos;
+            if keep_empty or value.strip():
+                parameters.append({&apos;name&apos;: name, &apos;value&apos;: value})
+        if keep_empty or parameters:
+            result.append({&apos;title&apos;: title, &apos;parameters&apos;: parameters})
+    return result</desc>
+<rect width="1320" height="550" rx="18" fill="#0c1210"/>
+<path d="M18 0H1302Q1320 0 1320 18V68H0V18Q0 0 18 0" fill="#19241e"/>
+<circle cx="30" cy="34" r="6" fill="#ff7c78"/><circle cx="52" cy="34" r="6" fill="#edc76c"/><circle cx="74" cy="34" r="6" fill="#8ccf85"/>
+<g font-family="Consolas, 'Courier New', monospace" font-size="20">
+<text x="108" y="41" fill="#c2f576">Loot Strefa TCG / server/product_content.py</text>
+<text x="39" y="116" fill="#68796f">143</text><text x="104" y="116" fill="#dce7dd" xml:space="preserve">def default_specification(product, settings=None, keep_empty=False):</text>
+<text x="39" y="146" fill="#68796f">144</text><text x="104" y="146" fill="#dce7dd" xml:space="preserve">    settings = settings or {}</text>
+<text x="39" y="176" fill="#68796f">145</text><text x="104" y="176" fill="#dce7dd" xml:space="preserve">    key = &apos;cards&apos; if is_card_product(product) else product.get(&apos;category&apos;)</text>
+<text x="39" y="206" fill="#68796f">146</text><text x="104" y="206" fill="#dce7dd" xml:space="preserve">    groups = SPECIFICATION_TEMPLATES.get(key, SPECIFICATION_TEMPLATES[&apos;default&apos;])</text>
+<text x="39" y="236" fill="#68796f">147</text><text x="104" y="236" fill="#dce7dd" xml:space="preserve">    result = []</text>
+<text x="39" y="266" fill="#68796f">148</text><text x="104" y="266" fill="#dce7dd" xml:space="preserve">    for title, fields in groups:</text>
+<text x="39" y="296" fill="#68796f">149</text><text x="104" y="296" fill="#dce7dd" xml:space="preserve">        parameters = []</text>
+<text x="39" y="326" fill="#68796f">150</text><text x="104" y="326" fill="#dce7dd" xml:space="preserve">        for name, key in fields:</text>
+<text x="39" y="356" fill="#68796f">151</text><text x="104" y="356" fill="#dce7dd" xml:space="preserve">            value = str(product.get(key) or settings.get(key) or &apos;&apos;) if key else &apos;&apos;</text>
+<text x="39" y="386" fill="#68796f">152</text><text x="104" y="386" fill="#dce7dd" xml:space="preserve">            if keep_empty or value.strip():</text>
+<text x="39" y="416" fill="#68796f">153</text><text x="104" y="416" fill="#dce7dd" xml:space="preserve">                parameters.append({&apos;name&apos;: name, &apos;value&apos;: value})</text>
+<text x="39" y="446" fill="#68796f">154</text><text x="104" y="446" fill="#dce7dd" xml:space="preserve">        if keep_empty or parameters:</text>
+<text x="39" y="476" fill="#68796f">155</text><text x="104" y="476" fill="#dce7dd" xml:space="preserve">            result.append({&apos;title&apos;: title, &apos;parameters&apos;: parameters})</text>
+<text x="39" y="506" fill="#68796f">156</text><text x="104" y="506" fill="#dce7dd" xml:space="preserve">    return result</text>
+</g></svg>

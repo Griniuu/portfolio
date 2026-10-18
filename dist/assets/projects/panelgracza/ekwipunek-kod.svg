@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1320" height="490" viewBox="0 0 1320 490" role="img" aria-labelledby="title desc">
+<title id="title">Panel Gracza — static/js/drify-rules.js</title>
+<desc id="desc">Source excerpt, lines 38–49. function getEpicSlotRules(itemName) {
+    const info = itemName ? ITEMS_DB[itemName] : null;
+    if (!info || !info.epik) return null;
+    const v2 = isEpicV2Item(itemName);
+    return {
+        version: v2 ? &apos;V2&apos; : &apos;V1&apos;,
+        lockedDrifts: !v2,
+        editableDrifts: v2,
+        driftSlots: v2 ? 3 : (EPIC_DRIFTS[itemName] || []).length,
+        orbSlots: v2 ? 2 : 1,
+    };
+}</desc>
+<rect width="1320" height="490" rx="18" fill="#0c1210"/>
+<path d="M18 0H1302Q1320 0 1320 18V68H0V18Q0 0 18 0" fill="#19241e"/>
+<circle cx="30" cy="34" r="6" fill="#ff7c78"/><circle cx="52" cy="34" r="6" fill="#edc76c"/><circle cx="74" cy="34" r="6" fill="#8ccf85"/>
+<g font-family="Consolas, 'Courier New', monospace" font-size="20">
+<text x="108" y="41" fill="#c2f576">Panel Gracza / static/js/drify-rules.js</text>
+<text x="39" y="116" fill="#68796f">38</text><text x="104" y="116" fill="#dce7dd" xml:space="preserve">function getEpicSlotRules(itemName) {</text>
+<text x="39" y="146" fill="#68796f">39</text><text x="104" y="146" fill="#dce7dd" xml:space="preserve">    const info = itemName ? ITEMS_DB[itemName] : null;</text>
+<text x="39" y="176" fill="#68796f">40</text><text x="104" y="176" fill="#dce7dd" xml:space="preserve">    if (!info || !info.epik) return null;</text>
+<text x="39" y="206" fill="#68796f">41</text><text x="104" y="206" fill="#dce7dd" xml:space="preserve">    const v2 = isEpicV2Item(itemName);</text>
+<text x="39" y="236" fill="#68796f">42</text><text x="104" y="236" fill="#dce7dd" xml:space="preserve">    return {</text>
+<text x="39" y="266" fill="#68796f">43</text><text x="104" y="266" fill="#dce7dd" xml:space="preserve">        version: v2 ? &apos;V2&apos; : &apos;V1&apos;,</text>
+<text x="39" y="296" fill="#68796f">44</text><text x="104" y="296" fill="#dce7dd" xml:space="preserve">        lockedDrifts: !v2,</text>
+<text x="39" y="326" fill="#68796f">45</text><text x="104" y="326" fill="#dce7dd" xml:space="preserve">        editableDrifts: v2,</text>
+<text x="39" y="356" fill="#68796f">46</text><text x="104" y="356" fill="#dce7dd" xml:space="preserve">        driftSlots: v2 ? 3 : (EPIC_DRIFTS[itemName] || []).length,</text>
+<text x="39" y="386" fill="#68796f">47</text><text x="104" y="386" fill="#dce7dd" xml:space="preserve">        orbSlots: v2 ? 2 : 1,</text>
+<text x="39" y="416" fill="#68796f">48</text><text x="104" y="416" fill="#dce7dd" xml:space="preserve">    };</text>
+<text x="39" y="446" fill="#68796f">49</text><text x="104" y="446" fill="#dce7dd" xml:space="preserve">}</text>
+</g></svg>

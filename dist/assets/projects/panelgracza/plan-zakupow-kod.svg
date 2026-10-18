@@ -1,0 +1,48 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1602" height="730" viewBox="0 0 1602 730" role="img" aria-labelledby="title desc">
+<title id="title">Panel Gracza — app/calculator_algorithms.py</title>
+<desc id="desc">Source excerpt, lines 35–54. def optimal_purchase_plan(remaining, count=30, sets=DEFAULT_SETS):
+    sets = tuple(tuple(group) for group in sets)
+    start = tuple(max(0, int(value)) for value in remaining)
+    states = {start: (0, (), (0, 0, 0, 0))}
+    milestones = []
+    for _ in range(count):
+        next_states = {}
+        for resources, (cost, order, bought) in states.items():
+            for index, group in enumerate(sets):
+                missing = tuple(max(0, group[i] - resources[i]) for i in range(4))
+                next_resources = tuple(resources[i] + missing[i] - group[i] for i in range(4))
+                next_bought = tuple(bought[i] + missing[i] for i in range(4))
+                candidate = (cost + sum(missing), order + (index + 1,), next_bought)
+                current = next_states.get(next_resources)
+                if current is None or (candidate[0], candidate[2], candidate[1]) &lt; (current[0], current[2], current[1]):
+                    next_states[next_resources] = candidate
+        states = next_states
+        best = min(states.values(), key=lambda value: (value[0], value[2], value[1]))
+        milestones.append({&apos;cost&apos;: best[0], &apos;order&apos;: list(best[1]), &apos;bought&apos;: list(best[2])})
+    return milestones</desc>
+<rect width="1602" height="730" rx="18" fill="#0c1210"/>
+<path d="M18 0H1584Q1602 0 1602 18V68H0V18Q0 0 18 0" fill="#19241e"/>
+<circle cx="30" cy="34" r="6" fill="#ff7c78"/><circle cx="52" cy="34" r="6" fill="#edc76c"/><circle cx="74" cy="34" r="6" fill="#8ccf85"/>
+<g font-family="Consolas, 'Courier New', monospace" font-size="20">
+<text x="108" y="41" fill="#c2f576">Panel Gracza / app/calculator_algorithms.py</text>
+<text x="39" y="116" fill="#68796f">35</text><text x="104" y="116" fill="#dce7dd" xml:space="preserve">def optimal_purchase_plan(remaining, count=30, sets=DEFAULT_SETS):</text>
+<text x="39" y="146" fill="#68796f">36</text><text x="104" y="146" fill="#dce7dd" xml:space="preserve">    sets = tuple(tuple(group) for group in sets)</text>
+<text x="39" y="176" fill="#68796f">37</text><text x="104" y="176" fill="#dce7dd" xml:space="preserve">    start = tuple(max(0, int(value)) for value in remaining)</text>
+<text x="39" y="206" fill="#68796f">38</text><text x="104" y="206" fill="#dce7dd" xml:space="preserve">    states = {start: (0, (), (0, 0, 0, 0))}</text>
+<text x="39" y="236" fill="#68796f">39</text><text x="104" y="236" fill="#dce7dd" xml:space="preserve">    milestones = []</text>
+<text x="39" y="266" fill="#68796f">40</text><text x="104" y="266" fill="#dce7dd" xml:space="preserve">    for _ in range(count):</text>
+<text x="39" y="296" fill="#68796f">41</text><text x="104" y="296" fill="#dce7dd" xml:space="preserve">        next_states = {}</text>
+<text x="39" y="326" fill="#68796f">42</text><text x="104" y="326" fill="#dce7dd" xml:space="preserve">        for resources, (cost, order, bought) in states.items():</text>
+<text x="39" y="356" fill="#68796f">43</text><text x="104" y="356" fill="#dce7dd" xml:space="preserve">            for index, group in enumerate(sets):</text>
+<text x="39" y="386" fill="#68796f">44</text><text x="104" y="386" fill="#dce7dd" xml:space="preserve">                missing = tuple(max(0, group[i] - resources[i]) for i in range(4))</text>
+<text x="39" y="416" fill="#68796f">45</text><text x="104" y="416" fill="#dce7dd" xml:space="preserve">                next_resources = tuple(resources[i] + missing[i] - group[i] for i in range(4))</text>
+<text x="39" y="446" fill="#68796f">46</text><text x="104" y="446" fill="#dce7dd" xml:space="preserve">                next_bought = tuple(bought[i] + missing[i] for i in range(4))</text>
+<text x="39" y="476" fill="#68796f">47</text><text x="104" y="476" fill="#dce7dd" xml:space="preserve">                candidate = (cost + sum(missing), order + (index + 1,), next_bought)</text>
+<text x="39" y="506" fill="#68796f">48</text><text x="104" y="506" fill="#dce7dd" xml:space="preserve">                current = next_states.get(next_resources)</text>
+<text x="39" y="536" fill="#68796f">49</text><text x="104" y="536" fill="#dce7dd" xml:space="preserve">                if current is None or (candidate[0], candidate[2], candidate[1]) &lt; (current[0], current[2], current[1]):</text>
+<text x="39" y="566" fill="#68796f">50</text><text x="104" y="566" fill="#dce7dd" xml:space="preserve">                    next_states[next_resources] = candidate</text>
+<text x="39" y="596" fill="#68796f">51</text><text x="104" y="596" fill="#dce7dd" xml:space="preserve">        states = next_states</text>
+<text x="39" y="626" fill="#68796f">52</text><text x="104" y="626" fill="#dce7dd" xml:space="preserve">        best = min(states.values(), key=lambda value: (value[0], value[2], value[1]))</text>
+<text x="39" y="656" fill="#68796f">53</text><text x="104" y="656" fill="#dce7dd" xml:space="preserve">        milestones.append({&apos;cost&apos;: best[0], &apos;order&apos;: list(best[1]), &apos;bought&apos;: list(best[2])})</text>
+<text x="39" y="686" fill="#68796f">54</text><text x="104" y="686" fill="#dce7dd" xml:space="preserve">    return milestones</text>
+</g></svg>
